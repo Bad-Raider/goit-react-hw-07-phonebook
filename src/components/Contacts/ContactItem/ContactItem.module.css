@@ -1,0 +1,36 @@
+.item{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.item:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.itemBtn{
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50px;
+    border: transparent;
+    background-color: rgb(220, 219, 219);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+
+}
+
+.itemBtn:hover{
+    transform: scale(1.4);
+    color: #007bff;
+}
+
+.span{
+    font-weight: 600;
+}
+
+.spanNum{
+    color: #007bff;
+    font-style: italic;
+    font-weight: 700;
+}
