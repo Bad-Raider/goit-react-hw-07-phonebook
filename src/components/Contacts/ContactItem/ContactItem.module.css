@@ -33,4 +33,9 @@
     color: #007bff;
     font-style: italic;
     font-weight: 700;
+    margin-left: 20px;
+}
+
+.wraper{
+    display: block;
 }

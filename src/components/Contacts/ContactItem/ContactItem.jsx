@@ -13,8 +13,11 @@ const ContactItem = ({ id, name, number }) => {
     return (
         <>
             <li className={css.item}>
-                <span className={css.span}>{name}: </span>
-                <span className={css.spanNum}>{number}</span>
+                <div className={css.wraper}>
+                    <span className={css.span}>{name}: </span>
+                    <span className={css.spanNum}>{number}</span>
+                </div>
+                
                 <button
                     className={css.itemBtn}
                     type="button"
