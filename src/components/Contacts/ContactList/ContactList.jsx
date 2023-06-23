@@ -8,7 +8,7 @@ const ContactList = () => {
 
     const getVisibleContacts = () => {
         const normalizedFilter = filter.toLowerCase();
-        return contacts.filter(contact =>
+        return contacts.items.filter(contact =>
             contact.name.toLowerCase().includes(normalizedFilter),
         );
     };
@@ -18,12 +18,14 @@ const ContactList = () => {
     return (
         <>
             <ul className={css.list}>
-                {arrContacts.map(({ id, name, number }) => (
+                {contacts.isLoading && <h2>Waiting, please)</h2>}
+                {contacts.error} %% <h2>Oooopsss...</h2>
+                {arrContacts.map(({ id, name, number, phone }) => (
                     <ContactItem
                         key={id}
                         id={id}
-                        name={name}
-                        number={number}
+                        name={name }
+                        number={number || phone}
                     />
                 ))}
             </ul>

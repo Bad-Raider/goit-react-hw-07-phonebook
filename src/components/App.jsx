@@ -1,32 +1,44 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addContact } from "redux/contactsSlice";
 import Container from "./Container/Container";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./Contacts/ContactList/ContactList";
 import ContactFilter from "./ContactFilter/ContactFilter";
-import { nanoid } from "nanoid";
+import { useEffect } from "react";
+import { fetchContacts } from "redux/operations";
+import { addContact } from "redux/operations";
 
 const App = () => { 
 
   const { contacts } = useSelector(state => state);
+  const { items } = contacts;
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    console.log('useEffect!!!!!');
+    dispatch(fetchContacts());
+
+  }, [dispatch]);
+
 
   const addNewContacts = (name, number) => {
 
-    const contactExists = contacts.some(
+    const contactExists = items.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
 
     if (contactExists) alert(`${name} is already in contacts.`);
     else {
       const newContact = {
-        id: nanoid(),
         name: name,
         number: number,
       };
+
       dispatch(addContact(newContact));
     };
   };
+
+ 
 
   return (
     <Container>
@@ -35,10 +47,8 @@ const App = () => {
         onSubmit={addNewContacts}
       />
       <h2>Contacts</h2>
-      <ContactFilter
-      />
-      <ContactList
-      />
+      <ContactFilter />
+      <ContactList/>
     </Container>
   );
 };
