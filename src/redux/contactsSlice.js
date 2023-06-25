@@ -26,7 +26,6 @@ const contactsSlice = createSlice({
         [addContact.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
-            // ? можливо це треба буде видалити, так як після повторного перезавантаження зявляється більше контактів
             state.items.push(action.payload);
         },
         [addContact.rejected](state, action) {

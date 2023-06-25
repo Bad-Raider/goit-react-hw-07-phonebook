@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const ContactList = () => {
 
-    const {contacts, filter} = useSelector(state => state);
+    const { contacts, filter } = useSelector(state => state);
 
     const getVisibleContacts = () => {
         const normalizedFilter = filter.toLowerCase();
@@ -17,14 +17,14 @@ const ContactList = () => {
 
     return (
         <>
+            {contacts.isLoading && <h2>Loading...</h2>}
+            {contacts.error && <h2>Oooopsss! Try again, please</h2>}
             <ul className={css.list}>
-                {contacts.isLoading && <h2>Waiting, please)</h2>}
-                {contacts.error} %% <h2>Oooopsss...</h2>
                 {arrContacts.map(({ id, name, number, phone }) => (
                     <ContactItem
                         key={id}
                         id={id}
-                        name={name }
+                        name={name}
                         number={number || phone}
                     />
                 ))}
